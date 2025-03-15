@@ -1,3 +1,8 @@
+pip install mysql.connector
+pip install pandas
+pip install streamlit
+
+
 import mysql.connector
 
 def fetch_data(sql_query):
