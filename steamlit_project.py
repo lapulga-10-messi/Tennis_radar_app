@@ -44,8 +44,8 @@ if options == "Home":
         search_terms = search_name.split()
         where_clause = " OR ".join([f"LOWER(name) LIKE LOWER('%{term}%')" for term in search_terms])
         query = f"""
-                SELECT *
-                FROM (
+                select  *
+                from (
                 select 
                         comp_rank.`rank` as `Rank`,
                         comp_rank.points as Points,
@@ -67,9 +67,9 @@ if options == "Home":
     st.image("C:/Users/asus/Desktop/py/python guvi/view-tennis-equipment.jpg")
 
     st.subheader("Summary Statistics")
-    total_competitors = fetch_data("SELECT COUNT(competitor_id) FROM competitors_table;").iloc[0, 0]
-    total_countries = fetch_data("SELECT COUNT(DISTINCT country) FROM competitors_table;").iloc[0, 0]
-    highest_points = fetch_data("SELECT MAX(points) FROM competitor_rankings_table;").iloc[0, 0]
+    total_competitors = fetch_data("select  COUNT(competitor_id) from competitors_table;").iloc[0, 0]
+    total_countries = fetch_data("select  COUNT(DISTINCT country) from competitors_table;").iloc[0, 0]
+    highest_points = fetch_data("select  MAX(points) from competitor_rankings_table;").iloc[0, 0]
 
     st.metric("Total Competitors", total_competitors)
     st.metric("Total Countries Represented", total_countries)
@@ -83,7 +83,7 @@ if options == "Home":
     )
 
     query = f"""
-      SELECT *
+      select *
       from(
       select 
                 comp_rank.`rank` as `Rank`,
